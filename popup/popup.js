@@ -178,7 +178,6 @@ function render(state, tab) {
   const result = state.result
   if (
     result &&
-    result.status === 'matched' &&
     Array.isArray(result.influencers) &&
     result.influencers.length > 0
   ) {
