@@ -76,8 +76,6 @@ async function handleVideoDetected(tabId, info) {
     const result = await InfluencerAPI.lookupVideo(info.platform, info.externalId)
     tabState.set(tabId, { info, result, loading: false, error: null })
 
-    console.log('lookup result', { tabId, info, result })
-
     if (
       result &&
       Array.isArray(result.influencers) &&
