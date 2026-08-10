@@ -1,0 +1,263 @@
+:root {
+  --bg: #ffffff;
+  --fg: #1f2329;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --accent: #4f46e5;
+  --accent-hover: #4338ca;
+  --error-bg: #fef2f2;
+  --error-fg: #b91c1c;
+  --success-bg: #ecfdf5;
+  --success-fg: #047857;
+  --notice-bg: #f3f4f6;
+  --badge-bg: #eef2ff;
+  --badge-fg: #4338ca;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1f2329;
+    --fg: #e5e7eb;
+    --muted: #9ca3af;
+    --border: #374151;
+    --accent: #818cf8;
+    --accent-hover: #a5b4fc;
+    --error-bg: #4c1d1d;
+    --error-fg: #fca5a5;
+    --success-bg: #064e3b;
+    --success-fg: #6ee7b7;
+    --notice-bg: #2b3138;
+    --badge-bg: #312e81;
+    --badge-fg: #c7d2fe;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 360px;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  font-size: 13px;
+  color: var(--fg);
+  background: var(--bg);
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.topbar h1 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 6px;
+  line-height: 1;
+}
+
+.icon-btn:hover {
+  background: var(--notice-bg);
+  color: var(--fg);
+}
+
+main {
+  padding: 12px 14px 16px;
+}
+
+.page-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.badge {
+  background: var(--badge-bg);
+  color: var(--badge-fg);
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.vid {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 11px;
+  color: var(--muted);
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+h2 {
+  font-size: 12px;
+  font-weight: 600;
+  margin: 6px 0 8px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.notice {
+  background: var(--notice-bg);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: var(--fg);
+  line-height: 1.45;
+  margin-bottom: 10px;
+}
+
+.loading {
+  color: var(--muted);
+  padding: 6px 2px;
+}
+
+.error {
+  background: var(--error-bg);
+  color: var(--error-fg);
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  word-break: break-word;
+}
+
+.success {
+  background: var(--success-bg);
+  color: var(--success-fg);
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+}
+
+.influencer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.influencer-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.influencer-card .name {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.influencer-card .slug {
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.socials a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--notice-bg);
+  color: var(--fg);
+  text-decoration: none;
+  font-size: 11px;
+}
+
+.socials a:hover {
+  background: var(--badge-bg);
+  color: var(--badge-fg);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+}
+
+.row > .field {
+  flex: 1;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.field label {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.field input {
+  font: inherit;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--fg);
+  width: 100%;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.15);
+}
+
+button.submit {
+  margin-top: 4px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button.submit:hover {
+  background: var(--accent-hover);
+}
+
+button.submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.hint {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: -2px;
+}
