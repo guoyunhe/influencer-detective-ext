@@ -4,5 +4,14 @@
   },
   "appDesc": {
     "message": "幫助你在觀看 YouTube 和 Bilibili 影片時，快速找出其中的模特兒與 Cosplayer。"
+  },
+  "notFound": {
+    "message": "在此貼文中未找到網紅。"
+  },
+  "ask": {
+    "message": "向社群提問"
+  },
+  "submit": {
+    "message": "提供資訊"
   }
 }

@@ -4,5 +4,14 @@
   },
   "appDesc": {
     "message": "YouTubeやBilibiliで視聴中の動画に登場するモデルやコスプレイヤーを特定します。"
+  },
+  "notFound": {
+    "message": "この投稿にはインフルエンサーが見つかりませんでした。"
+  },
+  "ask": {
+    "message": "コミュニティに質問する"
+  },
+  "submit": {
+    "message": "情報を提供する"
   }
 }

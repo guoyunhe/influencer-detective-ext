@@ -4,5 +4,14 @@
   },
   "appDesc": {
     "message": "Find out models and cosplayers behind the videos you watch on YouTube and Bilibili."
+  },
+  "notFound": {
+    "message": "No influencer found in this post."
+  },
+  "ask": {
+    "message": "Ask the community"
+  },
+  "submit": {
+    "message": "Provide information"
   }
 }
