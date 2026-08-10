@@ -9,10 +9,6 @@
 
 const content = document.getElementById('content');
 
-document.getElementById('settings-btn').addEventListener('click', () => {
-  chrome.runtime.openOptionsPage();
-});
-
 // ---------- small DOM helpers ------------------------------------------------
 
 function el(tag, attrs, children) {

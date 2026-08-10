@@ -1,3 +1,5 @@
+@import '@mantine/core/styles.css';
+
 :root {
   --bg: #ffffff;
   --fg: #1f2329;
