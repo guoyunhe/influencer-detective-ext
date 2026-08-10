@@ -6,7 +6,7 @@
   "default_locale": "en",
   "background": {
     "service_worker": "background.js",
-    "scripts": ["api.js", "background.js"]
+    "scripts": ["background.js"]
   },
   "action": {
     "default_popup": "popup.html",
