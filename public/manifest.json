@@ -23,7 +23,10 @@
   "permissions": ["storage", "activeTab", "tabs"],
   "host_permissions": [
     "https://*.youtube.com/*",
-    "https://*.bilibili.com/*"
+    "https://*.bilibili.com/*",
+    "https://*.x.com/*",
+    "https://*.twitter.com/*",
+    "https://*.tiktok.com/*"
   ],
   "content_scripts": [
     {
