@@ -1,0 +1,8 @@
+{
+  "appName": {
+    "message": "インフルエンサー探偵"
+  },
+  "appDesc": {
+    "message": "YouTubeやBilibiliで視聴中の動画に登場するモデルやコスプレイヤーを特定します。"
+  }
+}

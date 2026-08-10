@@ -1,15 +1,16 @@
 {
   "manifest_version": 3,
-  "name": "Influencer Detective",
+  "name": "__MSG_appName__",
   "version": "1.0.0",
-  "description": "Detect influencer info for YouTube and Bilibili videos via the Influencer Detective API.",
+  "description": "__MSG_appDesc__",
+  "default_locale": "en",
   "background": {
     "service_worker": "background.js",
     "scripts": ["api.js", "background.js"]
   },
   "action": {
     "default_popup": "popup.html",
-    "default_title": "Influencer Detective",
+    "default_title": "__MSG_appName__",
     "default_icon": {
       "16": "icons/icon16.png",
       "48": "icons/icon48.png",
