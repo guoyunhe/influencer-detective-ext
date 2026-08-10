@@ -23,10 +23,7 @@
   "permissions": ["storage", "activeTab", "tabs"],
   "host_permissions": [
     "https://*.youtube.com/*",
-    "https://youtu.be/*",
-    "https://*.bilibili.com/*",
-    "http://localhost/*",
-    "http://127.0.0.1/*"
+    "https://*.bilibili.com/*"
   ],
   "content_scripts": [
     {
