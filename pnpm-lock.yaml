@@ -222,6 +222,9 @@ importers:
       webextension-polyfill:
         specifier: ^0.12.0
         version: 0.12.0
+      xior:
+        specifier: ^0.8.4
+        version: 0.8.4
     devDependencies:
       '@guoyunhe/oxfmt-config':
         specifier: ^1.1.0
@@ -875,6 +878,10 @@ packages:
     resolution: {integrity: sha512-yEFYrVhod+hdNyx7g5Bnkkb0G6si8HJurOoOEgC8B/O0uXLHlaey/65KRv6cuWBNhBgHKAROVpc7QyYqE5gFng==}
     engines: {node: '>=20'}
 
+  tiny-lru@11.4.7:
+    resolution: {integrity: sha512-w/Te7uMUVeH0CR8vZIjr+XiN41V+30lkDdK+NRIDCUYKKuL9VcmaUEmaPISuwGhLlrTGh5yu18lENtR9axSxYw==}
+    engines: {node: '>=12'}
+
   tinyglobby@0.2.17:
     resolution: {integrity: sha512-wXR/dYpcqKmfWpEdZjiKJOwCNFndD0DMnrW/cYjVGttEkBfVgcLFHoNrlj47mjOVic9yyNu65alsgF4NQyTa2g==}
     engines: {node: '>=12.0.0'}
@@ -963,6 +970,9 @@ packages:
 
   webextension-polyfill@0.12.0:
     resolution: {integrity: sha512-97TBmpoWJEE+3nFBQ4VocyCdLKfw54rFaJ6EVQYLBCXqCIpLSZkwGgASpv4oPt9gdKCJ80RJlcmNzNn008Ag6Q==}
+
+  xior@0.8.4:
+    resolution: {integrity: sha512-aY2tUpDuLSKFfcgHs3HpS1cLy9Di31zBfw7CQvmsLONh4TOIfBg/B+5n3HE+xinJbhDvaCgtG5vmEgSXgz/axQ==}
 
 snapshots:
 
@@ -1379,6 +1389,8 @@ snapshots:
 
   tagged-tag@1.0.0: {}
 
+  tiny-lru@11.4.7: {}
+
   tinyglobby@0.2.17:
     dependencies:
       fdir: 6.5.0(picomatch@4.0.5)
@@ -1444,3 +1456,7 @@ snapshots:
       fsevents: 2.3.3
 
   webextension-polyfill@0.12.0: {}
+
+  xior@0.8.4:
+    dependencies:
+      tiny-lru: 11.4.7

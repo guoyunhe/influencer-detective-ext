@@ -10,7 +10,12 @@ export default function Header() {
       <Title size="md" style={{ flexGrow: 1 }}>
         {title}
       </Title>
-      <ActionIcon onClick={() => browser.runtime.openOptionsPage()} title="Settings" aria-label="Settings">
+      <ActionIcon
+        variant="default"
+        onClick={() => browser.runtime.openOptionsPage()}
+        title="Settings"
+        aria-label="Settings"
+      >
         <GearIcon />
       </ActionIcon>
     </Flex>
