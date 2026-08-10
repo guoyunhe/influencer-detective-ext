@@ -5,6 +5,9 @@
   "appDesc": {
     "message": "Find out models and cosplayers behind the videos you watch on YouTube and Bilibili."
   },
+  "unsupported": {
+    "message": "Unsupported page"
+  },
   "notFound": {
     "message": "No influencer found in this post."
   },

@@ -5,6 +5,9 @@
   "appDesc": {
     "message": "YouTube와 Bilibili에서 시청 중인 영상 속 모델과 코스플레이어를 찾아보세요."
   },
+  "unsupported": {
+    "message": "지원되지 않는 페이지"
+  },
   "notFound": {
     "message": "이 게시물에서 인플루언서를 찾을 수 없습니다."
   },

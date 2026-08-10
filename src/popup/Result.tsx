@@ -1,28 +1,37 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import useCurrentTab from './useCurrentTab';
 import lookup from './lookup';
 import { Box, Button, Center, Group, Loader, Stack } from '@mantine/core';
 import InfluencerCard from './InfluencerCard';
 import browser from 'webextension-polyfill';
+import parseUrl from './parseUrl';
 
 export default function Result() {
   const currentTab = useCurrentTab();
+
+  const url = currentTab?.url;
+  const params = useMemo(() => parseUrl(url), [url]);
+
   const [result, setResult] = useState<any>(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (currentTab?.url) {
+    if (params) {
       setLoading(true);
-      lookup(currentTab.url)
+      lookup(params)
         .then((res) => setResult(res.data))
         .catch(() => setResult(null))
         .finally(() => setLoading(false));
     }
-  }, [currentTab?.url]);
+  }, [params]);
+
+  if (!params) {
+    return <Center p="sm">{browser.i18n.getMessage('unsupported')}</Center>;
+  }
 
   if (loading) {
     return (
-      <Center>
+      <Center p="sm">
         <Loader />
       </Center>
     );

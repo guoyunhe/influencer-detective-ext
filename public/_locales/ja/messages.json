@@ -5,6 +5,9 @@
   "appDesc": {
     "message": "YouTubeやBilibiliで視聴中の動画に登場するモデルやコスプレイヤーを特定します。"
   },
+  "unsupported": {
+    "message": "サポートされていないページ"
+  },
   "notFound": {
     "message": "この投稿にはインフルエンサーが見つかりませんでした。"
   },

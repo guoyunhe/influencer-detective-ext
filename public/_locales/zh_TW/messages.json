@@ -5,6 +5,9 @@
   "appDesc": {
     "message": "幫助你在觀看 YouTube 和 Bilibili 影片時，快速找出其中的模特兒與 Cosplayer。"
   },
+  "unsupported": {
+    "message": "不支援的頁面"
+  },
   "notFound": {
     "message": "在此貼文中未找到網紅。"
   },
