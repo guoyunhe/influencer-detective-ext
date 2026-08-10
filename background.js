@@ -76,13 +76,14 @@ async function handleVideoDetected(tabId, info) {
     const result = await InfluencerAPI.lookupVideo(info.platform, info.externalId)
     tabState.set(tabId, { info, result, loading: false, error: null })
 
+    console.log('lookup result', { tabId, info, result })
+
     if (
       result &&
-      result.status === 'matched' &&
       Array.isArray(result.influencers) &&
       result.influencers.length > 0
     ) {
-      setBadge(tabId, String(result.influencers.length), '#1e8e3e')
+      setBadge(tabId, '✔', '#1e8e3e')
     } else {
       // no_post or no_influencer → user may submit info
       setBadge(tabId, '?', '#f9ab00')
@@ -101,7 +102,10 @@ async function handleVideoDetected(tabId, info) {
 function setBadge(tabId, text, color) {
   try {
     chrome.action.setBadgeText({ text: text, tabId: tabId })
-    if (color) chrome.action.setBadgeBackgroundColor({ color: color, tabId: tabId })
+    if (color) {
+      chrome.action.setBadgeBackgroundColor({ color: color, tabId: tabId })
+      chrome.action.setBadgeTextColor({ color: '#ffffff', tabId: tabId })
+    }
   } catch {
     /* action API unavailable in some contexts */
   }
