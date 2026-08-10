@@ -8,7 +8,7 @@
     "scripts": ["api.js", "background.js"]
   },
   "action": {
-    "default_popup": "popup/popup.html",
+    "default_popup": "popup.html",
     "default_title": "Influencer Detective",
     "default_icon": {
       "16": "icons/icon16.png",
@@ -17,7 +17,7 @@
     }
   },
   "options_ui": {
-    "page": "options/options.html",
+    "page": "options.html",
     "open_in_tab": false
   },
   "permissions": ["storage", "activeTab", "tabs"],
@@ -30,11 +30,7 @@
   ],
   "content_scripts": [
     {
-      "matches": [
-        "https://*.youtube.com/*",
-        "https://youtu.be/*",
-        "https://*.bilibili.com/*"
-      ],
+      "matches": ["https://*.youtube.com/*", "https://youtu.be/*", "https://*.bilibili.com/*"],
       "js": ["content/content.js"],
       "run_at": "document_idle"
     }
