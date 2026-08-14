@@ -5,7 +5,7 @@ import xior from 'xior';
 
 import App from './App';
 
-xior.defaults.baseURL = 'http://localhost:3333';
+xior.defaults.baseURL = import.meta.env.VITE_API_URL;
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

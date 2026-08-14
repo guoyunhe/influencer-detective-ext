@@ -1,4 +1,4 @@
-import { Box, Button, Center, Divider, Group, Loader, Stack, Text } from '@mantine/core';
+import { Button, Center, Divider, Group, Loader, Stack, Text } from '@mantine/core';
 import { useState, useEffect, useMemo } from 'react';
 import browser from 'webextension-polyfill';
 
@@ -78,8 +78,8 @@ export default function Result() {
         component='a'
         href={
           result?.id
-            ? `http://localhost:3000/posts/${result.id}`
-            : `http://localhost:3000/posts/new?url=${encodeURIComponent(currentTab?.url ?? '')}`
+            ? `${import.meta.env.VITE_APP_URL}/posts/${result.id}`
+            : `${import.meta.env.VITE_APP_URL}/posts/new?url=${encodeURIComponent(currentTab?.url ?? '')}`
         }
         target='_blank'
         fullWidth
