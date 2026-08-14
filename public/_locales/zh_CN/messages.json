@@ -16,5 +16,8 @@
   },
   "submit": {
     "message": "提供信息"
+  },
+  "askOrSubmit": {
+    "message": "提问或提供信息"
   }
 }

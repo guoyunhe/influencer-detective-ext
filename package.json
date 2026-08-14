@@ -10,7 +10,9 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite",
-    "format": "oxfmt .",
+    "format": "oxfmt --write .",
+    "format:check": "oxfmt --check .",
+    "prepare": "husky",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -29,9 +31,14 @@
     "@types/react-dom": "^19.2.4",
     "@types/webextension-polyfill": "^0.12.5",
     "@vitejs/plugin-react": "^6.0.5",
-    "oxfmt": "^0.62.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.3.0",
+    "oxfmt": "^0.63.0",
     "typescript": "^7.0.2",
     "vite": "^8.2.1"
+  },
+  "lint-staged": {
+    "*.{js,mjs,cjs,ts,mts,cts,jsx,tsx,vue,json,jsonc,css,scss,less,htm,html,md,mdx,yaml,yml}": "oxfmt --write"
   },
   "devEngines": {
     "packageManager": {

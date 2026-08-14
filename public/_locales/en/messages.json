@@ -16,5 +16,8 @@
   },
   "submit": {
     "message": "Provide information"
+  },
+  "askOrSubmit": {
+    "message": "Ask or provide information"
   }
 }

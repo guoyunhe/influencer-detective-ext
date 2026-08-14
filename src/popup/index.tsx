@@ -1,14 +1,15 @@
+import { MantineProvider } from '@mantine/core';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './App';
-import { MantineProvider } from '@mantine/core';
 import xior from 'xior';
+
+import App from './App';
 
 xior.defaults.baseURL = 'http://localhost:3333';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <MantineProvider defaultColorScheme="auto">
+    <MantineProvider defaultColorScheme='auto'>
       <App />
     </MantineProvider>
   </React.StrictMode>,

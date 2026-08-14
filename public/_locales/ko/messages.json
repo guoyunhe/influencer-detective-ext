@@ -16,5 +16,8 @@
   },
   "submit": {
     "message": "정보 제공하기"
+  },
+  "askOrSubmit": {
+    "message": "문의 또는 정보 제공"
   }
 }
