@@ -19,5 +19,11 @@
   },
   "askOrSubmit": {
     "message": "提問或提供資訊"
+  },
+  "comments": {
+    "message": "留言"
+  },
+  "anonymous": {
+    "message": "匿名"
   }
 }

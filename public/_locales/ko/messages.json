@@ -19,5 +19,11 @@
   },
   "askOrSubmit": {
     "message": "문의 또는 정보 제공"
+  },
+  "comments": {
+    "message": "댓글"
+  },
+  "anonymous": {
+    "message": "익명"
   }
 }

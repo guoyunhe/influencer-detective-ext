@@ -1,10 +1,11 @@
-import { Box, Button, Center, Group, Loader, Stack } from '@mantine/core';
+import { Box, Button, Center, Divider, Group, Loader, Stack, Text } from '@mantine/core';
 import { useState, useEffect, useMemo } from 'react';
 import browser from 'webextension-polyfill';
 
 import InfluencerCard from './InfluencerCard';
 import lookup from './lookup';
 import parseUrl from './parseUrl';
+import type { Comment, Post } from './types';
 import useCurrentTab from './useCurrentTab';
 
 export default function Result() {
@@ -13,14 +14,14 @@ export default function Result() {
   const url = currentTab?.url;
   const params = useMemo(() => parseUrl(url), [url]);
 
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<Post | null>(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (params) {
       setLoading(true);
       lookup(params)
-        .then((res) => setResult(res.data))
+        .then((post) => setResult(post))
         .catch(() => setResult(null))
         .finally(() => setLoading(false));
     }
@@ -40,32 +41,51 @@ export default function Result() {
 
   return (
     <div>
-      {result?.influencers.length > 0 ? (
+      {result?.influencers && result.influencers.length > 0 ? (
         <Stack p='sm'>
-          {result?.influencers.map((influencer: any) => (
+          {result.influencers.map((influencer) => (
             <InfluencerCard key={influencer.id} influencer={influencer} />
           ))}
         </Stack>
       ) : (
-        <Box p='sm'>
-          <Center mb='sm'>{browser.i18n.getMessage('notFound')}</Center>
-
-          <Group gap='xs'>
-            <Button
-              component='a'
-              href={
-                result?.id
-                  ? `http://localhost:3000/posts/${result.id}`
-                  : `http://localhost:3000/posts/new?url=${encodeURIComponent(currentTab?.url ?? '')}`
-              }
-              target='_blank'
-              size='xs'
-            >
-              {browser.i18n.getMessage('askOrSubmit')}
-            </Button>
-          </Group>
-        </Box>
+        <Center h={80}>{browser.i18n.getMessage('notFound')}</Center>
       )}
+
+      <Divider />
+
+      {result?.comments && result.comments.length > 0 && (
+        <Stack gap='xs'>
+          <Text fw={700}>{browser.i18n.getMessage('comments')}</Text>
+          {result.comments.map((comment: Comment) => (
+            <Stack key={comment.id} gap={2}>
+              <Group justify='space-between' wrap='nowrap'>
+                <Text size='sm' fw={600}>
+                  {comment.user?.name ?? browser.i18n.getMessage('anonymous')}
+                </Text>
+                <Text size='xs' c='dimmed'>
+                  {new Date(comment.createdAt).toLocaleString()}
+                </Text>
+              </Group>
+              <Text size='sm' style={{ whiteSpace: 'pre-wrap' }}>
+                {comment.body}
+              </Text>
+            </Stack>
+          ))}
+        </Stack>
+      )}
+
+      <Button
+        component='a'
+        href={
+          result?.id
+            ? `http://localhost:3000/posts/${result.id}`
+            : `http://localhost:3000/posts/new?url=${encodeURIComponent(currentTab?.url ?? '')}`
+        }
+        target='_blank'
+        fullWidth
+      >
+        {browser.i18n.getMessage('askOrSubmit')}
+      </Button>
     </div>
   );
 }

@@ -2,10 +2,20 @@ import { Button, Card, Group, Text } from '@mantine/core';
 import { InstagramLogoIcon, TiktokLogoIcon, YoutubeLogoIcon } from '@phosphor-icons/react';
 
 import I18nAttr from './I18nAttr';
+import type { Account, Influencer } from './types';
 
 interface InfluencerCardProps {
-  influencer: any;
+  influencer: Influencer;
 }
+
+const ACCOUNT_STYLES: Record<
+  string,
+  { icon: typeof YoutubeLogoIcon; color: string; label: string }
+> = {
+  youtube: { icon: YoutubeLogoIcon, color: 'red', label: 'YouTube' },
+  instagram: { icon: InstagramLogoIcon, color: 'pink', label: 'Instagram' },
+  tiktok: { icon: TiktokLogoIcon, color: 'cyan', label: 'TikTok' },
+};
 
 export default function InfluencerCard({ influencer }: InfluencerCardProps) {
   return (
@@ -17,42 +27,24 @@ export default function InfluencerCard({ influencer }: InfluencerCardProps) {
       </Card.Section>
       <Card.Section inheritPadding py='xs'>
         <Group gap='sm'>
-          {influencer.youtube && (
-            <Button
-              leftSection={<YoutubeLogoIcon size={20} weight='fill' />}
-              component='a'
-              href={`https://www.youtube.com/@${influencer.youtube}`}
-              target='_blank'
-              color='red'
-              size='xs'
-            >
-              YouTube
-            </Button>
-          )}
-          {influencer.instagram && (
-            <Button
-              leftSection={<InstagramLogoIcon size={20} />}
-              component='a'
-              href={`https://www.instagram.com/${influencer.instagram}`}
-              target='_blank'
-              color='pink'
-              size='xs'
-            >
-              Instagram
-            </Button>
-          )}
-          {influencer.tiktok && (
-            <Button
-              leftSection={<TiktokLogoIcon size={20} />}
-              component='a'
-              href={`https://www.tiktok.com/@${influencer.tiktok}`}
-              target='_blank'
-              color='cyan'
-              size='xs'
-            >
-              TikTok
-            </Button>
-          )}
+          {influencer.accounts?.map((account: Account) => {
+            const style = ACCOUNT_STYLES[account.platform];
+            const Icon = style?.icon;
+            return (
+              <Button
+                key={account.id}
+                leftSection={Icon ? <Icon size={20} /> : undefined}
+                component='a'
+                href={account.url ?? undefined}
+                target='_blank'
+                color={style?.color ?? 'gray'}
+                variant={style ? 'filled' : 'light'}
+                size='xs'
+              >
+                {style?.label ?? account.platform}
+              </Button>
+            );
+          })}
         </Group>
       </Card.Section>
     </Card>

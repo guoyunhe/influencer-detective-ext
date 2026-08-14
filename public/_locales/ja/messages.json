@@ -19,5 +19,11 @@
   },
   "askOrSubmit": {
     "message": "質問または情報提供"
+  },
+  "comments": {
+    "message": "コメント"
+  },
+  "anonymous": {
+    "message": "匿名"
   }
 }
