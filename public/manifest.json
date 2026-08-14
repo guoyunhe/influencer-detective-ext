@@ -43,7 +43,7 @@
   },
   "browser_specific_settings": {
     "gecko": {
-      "id": "influencer-detective@influencer-detective.local",
+      "id": "infdet@infdet.local",
       "strict_min_version": "115.0"
     }
   }
