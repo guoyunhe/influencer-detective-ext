@@ -22,6 +22,14 @@
     "open_in_tab": false
   },
   "permissions": ["storage", "activeTab", "tabs"],
+  "data_collection_permissions": {
+    "required_permissions": {
+      "technical_and_interaction_data": true,
+      "location_data": false,
+      "user_activity": false,
+      "personally_identifiable_information": false
+    }
+  },
   "host_permissions": [
     "https://*.youtube.com/*",
     "https://*.bilibili.com/*",

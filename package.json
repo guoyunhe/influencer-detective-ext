@@ -12,7 +12,7 @@
     "dev": "vite",
     "format": "oxfmt --write .",
     "format:check": "oxfmt --check .",
-    "package": "pnpm build && web-ext build --source-dir dist --artifacts-dir web-ext-artifacts --overwrite-dest --filename infdet-ext.zip",
+    "package": "pnpm build && web-ext build --source-dir dist --artifacts-dir web-ext-artifacts --overwrite-dest --filename infdet.zip",
     "prepare": "husky",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
