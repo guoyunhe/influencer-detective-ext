@@ -12,6 +12,7 @@
     "dev": "vite",
     "format": "oxfmt --write .",
     "format:check": "oxfmt --check .",
+    "package": "pnpm build && web-ext build --source-dir dist --artifacts-dir web-ext-artifacts --overwrite-dest --filename infdet-ext.zip",
     "prepare": "husky",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -35,7 +36,8 @@
     "lint-staged": "^17.3.0",
     "oxfmt": "^0.63.0",
     "typescript": "^7.0.2",
-    "vite": "^8.2.1"
+    "vite": "^8.2.1",
+    "web-ext": "^10.6.0"
   },
   "lint-staged": {
     "*.{js,mjs,cjs,ts,mts,cts,jsx,tsx,vue,json,jsonc,css,scss,less,htm,html,md,mdx,yaml,yml}": "oxfmt --write"
