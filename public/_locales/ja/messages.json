@@ -1,6 +1,6 @@
 {
   "appName": {
-    "message": "インフルエンサー探偵"
+    "message": "インフルエンサー検出器"
   },
   "appDesc": {
     "message": "YouTubeやBilibiliで視聴中の動画に登場するモデルやコスプレイヤーを特定します。"
