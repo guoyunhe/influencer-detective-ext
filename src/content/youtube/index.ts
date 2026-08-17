@@ -73,9 +73,26 @@ function pickName(name: Record<string, string>): string {
   return name[lang] || name.en || Object.values(name)[0] || '';
 }
 
+const GENDER_EMOJIS: Record<string, string> = {
+  male: '♂️',
+  female: '♀️',
+  other: '⚧️',
+};
+
+/** Convert a two-letter region code (e.g. 'kr') into a flag emoji. */
+function regionToFlag(region: string | null): string | null {
+  if (!region || region.length !== 2) return null;
+  const codePoints = region
+    .toUpperCase()
+    .split('')
+    .map((char) => 0x1f1e6 + char.charCodeAt(0) - 65);
+  if (codePoints.some((cp) => cp < 0x1f1e6 || cp > 0x1f1ff)) return null;
+  return String.fromCodePoint(...codePoints);
+}
+
 function formatMeta(region: string | null, gender: string | null): string {
-  const parts = [region?.toUpperCase(), gender].filter(Boolean);
-  return parts.join(' · ');
+  const parts = [regionToFlag(region), gender ? GENDER_EMOJIS[gender] : null].filter(Boolean);
+  return parts.join(' ');
 }
 
 const STYLE = `
