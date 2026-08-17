@@ -46,6 +46,11 @@
       ],
       "js": ["content.js"],
       "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://*.youtube.com/*", "https://youtu.be/*"],
+      "js": ["youtube.js"],
+      "run_at": "document_idle"
     }
   ],
   "icons": {
