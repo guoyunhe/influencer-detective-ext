@@ -3,42 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <title>Influencer Detector — Settings</title>
-    <link rel="stylesheet" href="src/options/options.css" />
+    <link rel="stylesheet" href="src/options/index.css" />
   </head>
   <body>
-    <main class="card">
-      <h1>Settings</h1>
-      <p class="muted">
-        Base URL of the Influencer Detector API. Defaults to
-        <code>%VITE_API_URL%</code>.
-      </p>
-
-      <form id="form">
-        <label for="apiBase">API base URL</label>
-        <input
-          type="url"
-          id="apiBase"
-          name="apiBase"
-          placeholder="%VITE_API_URL%"
-          autocomplete="off"
-        />
-
-        <div class="actions">
-          <button type="submit" class="primary">Save</button>
-          <button type="button" id="reset">Reset to default</button>
-        </div>
-
-        <div id="status" class="status"></div>
-      </form>
-
-      <hr />
-      <p class="muted small">
-        When the API runs on a different host, also add that host to
-        <code>host_permissions</code> in <code>manifest.json</code> and reload the extension.
-      </p>
-    </main>
-
-    <script src="../api.js"></script>
-    <script type="module" src="src/options/options.js"></script>
+    <div id="root"></div>
+    <script type="module" src="src/options/index.tsx"></script>
   </body>
 </html>
