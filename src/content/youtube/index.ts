@@ -279,8 +279,28 @@ function scan(root: ParentNode) {
 
 scan(document);
 
+// Batch MutationObserver callbacks: collect the changed parent nodes and
+// scan each of them once per animation frame, instead of scanning every
+// added node individually. This avoids redundant scans when a large subtree
+// (e.g. a feed of video cards) is inserted at once.
+const dirtyRoots = new Set<ParentNode>();
+let scheduled = false;
+
+function scheduleScan() {
+  if (scheduled) return;
+  scheduled = true;
+  requestAnimationFrame(() => {
+    scheduled = false;
+    for (const root of dirtyRoots) scan(root);
+    dirtyRoots.clear();
+  });
+}
+
 const observer = new MutationObserver((mutations) => {
   for (const mutation of mutations) {
+    if (mutation.target instanceof Element) {
+      dirtyRoots.add(mutation.target);
+    }
     mutation.addedNodes.forEach((node) => {
       if (node instanceof Element) {
         // New nodes may be the card itself or a descendant such as the
@@ -288,15 +308,20 @@ const observer = new MutationObserver((mutations) => {
         const anchor = node.closest<HTMLAnchorElement>(WATCH_SELECTOR);
         if (anchor) processAnchor(anchor);
       }
-      if (node instanceof HTMLElement) {
-        scan(node);
-      }
     });
   }
+  scheduleScan();
 });
 
 observer.observe(document.documentElement, { childList: true, subtree: true });
 
 // YouTube is a SPA that recycles DOM nodes while scrolling; re-scan
 // periodically as a fallback to restore any overlays it may have removed.
-setInterval(() => scan(document), 2000);
+// Run infrequently and during idle time to avoid jank.
+setInterval(() => {
+  if ('requestIdleCallback' in window) {
+    window.requestIdleCallback(() => scan(document));
+  } else {
+    scan(document);
+  }
+}, 5000);
