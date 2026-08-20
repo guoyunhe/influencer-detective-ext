@@ -38,6 +38,7 @@ export interface Influencer {
   id: number;
   slug: string;
   name: Record<string, string>;
+  alias: string[];
   avatar: string | null;
   cover: string | null;
   createdAt: string;
