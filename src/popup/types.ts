@@ -39,6 +39,7 @@ export interface Influencer {
   slug: string;
   name: Record<string, string>;
   alias: string[];
+  excludeKeywords: string[];
   avatar: string | null;
   cover: string | null;
   createdAt: string;
