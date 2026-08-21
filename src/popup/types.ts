@@ -34,15 +34,26 @@ export interface Account {
   url: string | null;
 }
 
+export interface Tag {
+  id: number;
+  slug: string;
+  name: Record<string, string>;
+  forInfluencer: boolean;
+  icon: string | null;
+}
+
 export interface Influencer {
   id: number;
   slug: string;
   name: Record<string, string>;
   alias: string[];
   excludeKeywords: string[];
+  gender: string | null;
+  region: string | null;
   avatar: string | null;
   cover: string | null;
   createdAt: string;
   updatedAt: string | null;
   accounts?: Account[];
+  tags?: Tag[];
 }

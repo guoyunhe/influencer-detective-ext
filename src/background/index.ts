@@ -16,12 +16,18 @@ async function getApiBase(): Promise<string> {
   return typeof value === 'string' && value ? value : DEFAULT_API_BASE;
 }
 
+interface LookupTag {
+  id: number;
+  name: Record<string, string>;
+}
+
 interface LookupInfluencer {
   id: number;
   name: Record<string, string>;
   gender: string | null;
   region: string | null;
   avatar: string | null;
+  tags?: LookupTag[];
 }
 
 interface LookupPost {

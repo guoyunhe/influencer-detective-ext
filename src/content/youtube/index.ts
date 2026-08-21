@@ -8,12 +8,18 @@
  * found yet, the extension icon linking to the "submit a post" page.
  */
 
+interface Tag {
+  id: number;
+  name: Record<string, string>;
+}
+
 interface Influencer {
   id: number;
   name: Record<string, string>;
   gender: string | null;
   region: string | null;
   avatar: string | null;
+  tags?: Tag[];
 }
 
 interface Post {
@@ -150,11 +156,29 @@ const STYLE = `
   .infdet-item:hover .infdet-tooltip {
     display: block;
   }
+  .infdet-tooltip-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
   .infdet-tooltip-name {
     font-weight: 600;
   }
   .infdet-tooltip-meta {
     opacity: 0.85;
+    font-size: 11px;
+  }
+  .infdet-tooltip-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    margin-top: 4px;
+  }
+  .infdet-tooltip-tag {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ddd;
+    padding: 1px 6px;
+    border-radius: 4px;
     font-size: 11px;
   }
 `;
@@ -181,17 +205,34 @@ function createAvatar(influencer: Influencer): HTMLElement {
   const tooltip = document.createElement('div');
   tooltip.className = 'infdet-tooltip';
 
-  const name = document.createElement('div');
+  const row = document.createElement('div');
+  row.className = 'infdet-tooltip-row';
+
+  const name = document.createElement('span');
   name.className = 'infdet-tooltip-name';
   name.textContent = pickName(influencer.name);
-  tooltip.appendChild(name);
+  row.appendChild(name);
 
   const metaText = formatMeta(influencer.region, influencer.gender);
   if (metaText) {
-    const meta = document.createElement('div');
+    const meta = document.createElement('span');
     meta.className = 'infdet-tooltip-meta';
     meta.textContent = metaText;
-    tooltip.appendChild(meta);
+    row.appendChild(meta);
+  }
+
+  tooltip.appendChild(row);
+
+  if (influencer.tags && influencer.tags.length > 0) {
+    const tagsDiv = document.createElement('div');
+    tagsDiv.className = 'infdet-tooltip-tags';
+    for (const tag of influencer.tags) {
+      const tagEl = document.createElement('span');
+      tagEl.className = 'infdet-tooltip-tag';
+      tagEl.textContent = pickName(tag.name);
+      tagsDiv.appendChild(tagEl);
+    }
+    tooltip.appendChild(tagsDiv);
   }
 
   item.appendChild(link);
